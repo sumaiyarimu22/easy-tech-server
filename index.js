@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const productRoutes = require("./routes/product");
 
 const app = express();
 
@@ -12,6 +13,9 @@ app.use(
   })
 );
 app.use(express.json());
+
+// route
+app.use("/api/products", productRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "welcome to easy Tech server!" });
